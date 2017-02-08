@@ -15,6 +15,10 @@
             label           = 'Текст ответа'
             inputClasses    = ''}
 
+        {if $oItem->getTextReply()}
+            {component 'alert' mods='error' text='Внимание! Ответ уже был отправлен ранее. <br/>Будет отправлен еще раз.'}
+        {/if}
+
         <input type="hidden" name="id" value="{$oItem->getId()}">
     </form>
 {/capture}

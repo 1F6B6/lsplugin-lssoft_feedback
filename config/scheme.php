@@ -43,6 +43,23 @@ $config['$config_scheme$'] = array(
             ),
         ),
     ),
+    'notify_mail_list'       => array(
+        'type'              => 'array',
+        'name'              => 'config.notify_mail_list.name',
+        'description'       => 'config.notify_mail_list.description',
+        'validator'         => array(
+            'type'   => 'Array',
+            'params' => array(
+                'item_validator' => array(
+                    'type'   => 'Email',
+                    'params' => array(
+                        'allowEmpty' => false,
+                    ),
+                ),
+                'allowEmpty'     => true,
+            ),
+        ),
+    ),
 );
 
 
@@ -64,6 +81,7 @@ $config['$config_sections$'] = array(
          */
         'allowed_keys' => array(
             'per_page',
+            'notify_mail_list',
         ),
     ),
 );

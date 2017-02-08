@@ -42,7 +42,7 @@ class PluginLssoftFeedback extends Plugin
 
     public function Init()
     {
-
+        $this->Viewer_AppendScript(Plugin::GetWebPath(__CLASS__) . 'frontend/js/init.js');
     }
 
     public function Activate()

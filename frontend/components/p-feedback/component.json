@@ -1,0 +1,15 @@
+{
+    "name": "p-feedback",
+    "version": "1.0.0",
+    "dependencies": {
+
+    },
+    "templates": {
+        "toolbar-feedback": "toolbar.feedback.tpl",
+        "modal-feedback": "modal.feedback.tpl"
+    },
+    "scripts": {
+        "toggle": "js/toggle.js",
+        "modal": "js/modal.js"
+    }
+}

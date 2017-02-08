@@ -17,7 +17,7 @@ class PluginLssoftFeedback_ActionAdmin extends PluginAdmin_ActionPlugin
         $this->oAdminUrl = Engine::GetEntity('PluginAdmin_ModuleUi_EntityAdminUrl');
         $this->oAdminUrl->setPluginCode(Plugin::GetPluginCode($this));
         $this->oUserCurrent = $this->User_GetUserCurrent();
-        $this->Viewer_AppendScript(Plugin::GetWebPath(__CLASS__) . 'js/main.js');
+        $this->Viewer_AppendScript(Plugin::GetWebPath(__CLASS__) . 'frontend/js/admin.js');
     }
 
     /**

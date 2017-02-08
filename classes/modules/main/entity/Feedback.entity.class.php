@@ -6,14 +6,18 @@ class PluginLssoftFeedback_ModuleMain_EntityFeedback extends EntityORM
         'user' => array(self::RELATION_TYPE_BELONGS_TO, 'ModuleUser_EntityUser', 'user_id'),
     );
 
-    protected $aValidateRules = array(
-        array('user_name', 'string', 'allowEmpty' => true, 'min' => 1, 'max' => 200, 'label' => 'Имя'),
-        array('user_mail', 'email', 'allowEmpty' => true, 'label' => 'Электронная почта'),
-        array('text', 'string', 'allowEmpty' => false, 'min' => 1, 'max' => 2000, 'label' => 'Текст сообщения'),
-        array('user_name', 'name_check'),
-        array('user_mail', 'mail_check'),
-        array('text,user_name,user_mail', 'filter_escape'),
-    );
+    public function __construct($aParam = false)
+    {
+        $this->aValidateRules = array(
+            array('user_name', 'string', 'allowEmpty' => true, 'min' => 1, 'max' => 200, 'label' => $this->Lang_Get('plugin.lssoft_feedback.field.name.label')),
+            array('user_mail', 'email', 'allowEmpty' => true, 'label' => $this->Lang_Get('plugin.lssoft_feedback.field.mail.label')),
+            array('text', 'string', 'allowEmpty' => false, 'min' => 1, 'max' => 2000, 'label' => $this->Lang_Get('plugin.lssoft_feedback.field.text.label')),
+            array('user_name', 'name_check'),
+            array('user_mail', 'mail_check'),
+            array('text,user_name,user_mail', 'filter_escape'),
+        );
+        parent::__construct($aParam);
+    }
 
     /**
      * Выполняется перед сохранением
@@ -44,7 +48,7 @@ class PluginLssoftFeedback_ModuleMain_EntityFeedback extends EntityORM
     {
         if (!$this->_hasValidateErrors()) {
             if (!$this->getUserId() and !$sValue) {
-                return 'Необходимо указать имя';
+                return $this->Lang_Get('plugin.lssoft_feedback.field.name.error_empty');
             }
             if (!$sValue) {
                 $this->setUserName(null);
@@ -64,7 +68,7 @@ class PluginLssoftFeedback_ModuleMain_EntityFeedback extends EntityORM
     {
         if (!$this->_hasValidateErrors()) {
             if (!$this->getUserId() and !$sValue) {
-                return 'Необходимо указать электронную почту';
+                return $this->Lang_Get('plugin.lssoft_feedback.field.mail.error_empty');
             }
             if (!$sValue) {
                 $this->setUserMail(null);

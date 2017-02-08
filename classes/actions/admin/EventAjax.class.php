@@ -25,7 +25,7 @@ class PluginLssoftFeedback_ActionAdmin_EventAjax extends Event
             $this->Viewer_Assign('oItem', $oItem);
             $this->Viewer_AssignAjax('sText', $this->Viewer_Fetch(Plugin::GetTemplatePath($this) . 'modals/modal.admin.reply.tpl'));
         } else {
-            return $this->Message_AddErrorSingle('Не удалось найти обращение');
+            return $this->Message_AddErrorSingle($this->Lang_Get('common.error.error'));
         }
     }
 
@@ -37,12 +37,12 @@ class PluginLssoftFeedback_ActionAdmin_EventAjax extends Event
         $this->Viewer_SetResponseAjax();
 
         if (!($oItem = $this->PluginLssoftFeedback_Main_GetFeedbackById((int)getRequestStr('id')))) {
-            return $this->Message_AddErrorSingle('Не удалось найти обращение');
+            return $this->Message_AddErrorSingle($this->Lang_Get('common.error.error'));
         }
 
         $sText = trim(getRequestStr('text'));
         if (!$sText) {
-            return $this->Message_AddErrorSingle('Необходимо написать текст сообщения');
+            return $this->Message_AddErrorSingle($this->Lang_Get('plugin.lssoft_feedback.field.reply_text.error_empty'));
         }
 
         $oItem->setTextReply($sText);
@@ -52,6 +52,7 @@ class PluginLssoftFeedback_ActionAdmin_EventAjax extends Event
          * Отправляем на почту
          */
         $this->PluginLssoftFeedback_Main_NotifyReply($oItem);
+        $this->Message_AddNotice($this->Lang_Get('plugin.lssoft_feedback.submit.reply'));
     }
 
     /**
@@ -62,7 +63,7 @@ class PluginLssoftFeedback_ActionAdmin_EventAjax extends Event
         $this->Viewer_SetResponseAjax();
 
         if (!($oItem = $this->PluginLssoftFeedback_Main_GetFeedbackById((int)getRequestStr('id')))) {
-            return $this->Message_AddErrorSingle('Не удалось найти обращение');
+            return $this->Message_AddErrorSingle($this->Lang_Get('common.error.error'));
         }
 
         $oItem->Delete();

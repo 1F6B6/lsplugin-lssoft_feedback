@@ -7,7 +7,9 @@ $config['$root$']['db']['table']['lssoft_feedback_main_feedback'] = '___db.table
  * Количество обращений на одну страницу
  */
 $config['per_page'] = 20;
-
-$config['notify_mail'] = null;
+/**
+ * Емайлы на которые отправлять уведомления. Если пустой, то будет отправляться на 'general.admin_mail'
+ */
+$config['notify_mail_list'] = array();
 
 return $config;

@@ -41,7 +41,7 @@
                     {/if}
                 </td>
                 <td class="ls-ta-r">
-                    <a href="#" class="fa fa-trash-o js-lssoft-feedback-admin-remove js-confirm" data-toggle="tooltip" data-id="{$item->getId()}" title="Удалить"></a>
+                    <a href="#" class="fa fa-trash-o js-lssoft-feedback-admin-remove js-confirm-remove-" data-toggle="tooltip" data-id="{$item->getId()}" title="Удалить"></a>
                 </td>
             </tr>
         {/foreach}
